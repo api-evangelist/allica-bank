@@ -1,0 +1,123 @@
+aid: allica-bank
+name: Allica Bank
+review:
+  question: Does Allica Bank expose a public, documented Open Banking developer surface, and did we confirm a live Open Data endpoint?
+  answer: true
+  date: '2026-07-23'
+  reviewer: API Evangelist
+  openDataConfirmed: false
+findings:
+  summary: |
+    Allica Bank Limited is a UK FCA/PRA-authorised ASPSP (FRN 821851) serving
+    established SMEs. It is NOT one of the CMA9 mandated banks, but it runs a
+    public Open Banking developer portal (an Ozone-hosted "Perry" portal) at
+    https://developer.api.ob.allica.bank/ documenting the OBIE Read/Write API
+    family for its Business Rewards accounts: Account and Transaction
+    Information (AIS), Payment Initiation (PIS), and Confirmation of Funds
+    (fundsconfirmations). Two proprietary, Allica-branded OpenAPI 3.0 specs
+    were harvested verbatim from the portal - an Account and Transaction API
+    Specification v3.1.10 (server /open-banking/v3.1/aisp, 15 paths) and a
+    Payment Initiation API Specification v4.0.0 (server /open-banking/v4.0/pisp,
+    21 paths). These conform to the OBIE Read/Write Standard but are the bank's
+    own contracts (they reference "Allica Business Rewards accounts"), not the
+    shared OBIE standard spec.
+
+    The production OIDC discovery document was confirmed live (HTTP 200) at
+    https://auth1.api.ob.allica.bank/.well-known/openid-configuration and is
+    captured as the authoritative source of endpoints and the security model.
+    It advertises FAPI-grade auth: response_types "code" / "code id_token",
+    token_endpoint_auth_methods private_key_jwt + tls_client_auth (mTLS),
+    tls_client_certificate_bound_access_tokens true, and scopes including
+    accounts, payments, fundsconfirmations, consents, credit-cards-accounts,
+    customers, loans, financings and invoice-financings. Onboarding requires
+    OBIE Directory Software Statement Assertions and eIDAS/OB (QWAC/QSeal)
+    certificates, via Dynamic Client Registration v3.2.
+
+    NO Open Data API endpoint was confirmed. Allica is a branchless digital
+    SME bank with no ATMs or branches and is not CMA9-mandated, so it does not
+    publish the OBIE Open Data reference APIs (ATMs/Branches/PCA/BCA/SME loans).
+    Probes of candidate Open Data hosts (api.ob.allica.bank, api.allica.bank,
+    openbanking.allica.bank on /open-banking/vX/atms|branches|business-current-accounts)
+    returned no live 200 JSON. No Open Data surface is therefore represented,
+    and none was fabricated.
+  authModel:
+    protocol: FAPI (OAuth2 / OpenID Connect)
+    tokenEndpointAuthMethods:
+      - private_key_jwt
+      - tls_client_auth
+    strongCustomerAuthentication: true
+    mutualTLS: true
+    certificateBoundTokens: true
+    onboarding: OBIE Directory SSA + eIDAS/OB (QWAC/QSeal) certificates; DCR v3.2
+  specProvenance:
+    - spec: openapi/allica-bank-account-information-openapi.yaml
+      title: Account and Transaction API Specification
+      version: 3.1.10
+      provenance: Allica proprietary (OBIE Read/Write v3.1 conformant, bank-branded)
+      source: https://developer.api.ob.allica.bank/swagger/account-info-openapi.yaml
+      httpStatus: 200
+    - spec: openapi/allica-bank-payment-initiation-openapi.yaml
+      title: Payment Initiation API Specification
+      version: 4.0.0
+      provenance: Allica proprietary (OBIE Read/Write v4.0 conformant, bank-branded)
+      source: https://developer.api.ob.allica.bank/swagger/payment-initiation-openapi.yaml
+      httpStatus: 200
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+      documented: true
+      note: OBIE Read/Write AIS; FAPI/mTLS-gated, direct unauthenticated GET returns no response.
+    - protocol: REST
+      scheme: https
+      baseURL: https://rs1.api.ob.allica.bank/open-banking/v4.0/pisp
+      documented: true
+      note: OBIE Read/Write PIS; FAPI/mTLS-gated.
+    - protocol: REST
+      scheme: https
+      baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/cbpii
+      documented: true
+      verified: false
+      note: Confirmation of Funds (CBPII); inferred from fundsconfirmations scope + portal docs, standalone base not independently confirmed.
+    - protocol: OpenData
+      scheme: https
+      documented: false
+      note: No OBIE Open Data (ATMs/branches/products) API published or confirmed. Allica is branchless, SME-only, non-CMA9.
+  endpointsConfirmed:
+    - GET https://developer.api.ob.allica.bank/ (200, developer portal)
+    - GET https://developer.api.ob.allica.bank/perry/developer/welcome (200)
+    - GET https://auth1.api.ob.allica.bank/.well-known/openid-configuration (200, prod OIDC discovery)
+    - GET https://auth1.sandbox.ob.allica.bank/.well-known/openid-configuration (200, sandbox OIDC discovery)
+    - GET https://developer.api.ob.allica.bank/swagger/account-info-openapi.yaml (200, AIS OpenAPI)
+    - GET https://developer.api.ob.allica.bank/swagger/payment-initiation-openapi.yaml (200, PIS OpenAPI)
+  discoveredEndpoints:
+    issuer: https://auth1.api.ob.allica.bank
+    token_endpoint: https://as1.api.ob.allica.bank/token
+    authorization_endpoint: https://secure.allica.bank/open-banking
+    registration_endpoint: https://rs1.api.ob.allica.bank/dynamic-client-registration/v3.2/register
+    jwks_uri: https://keystore.openbanking.org.uk/0014H00003ARnV1QAL/he6YcKHl3WQlqOS3obICVV.jwks
+sources:
+  - url: https://www.allica.bank/
+    type: Website
+    note: Corporate site; FRN 821851, company 07706156; SME business bank; no developer links in footer.
+  - url: https://developer.api.ob.allica.bank/
+    type: DeveloperPortal
+    note: Public Open Banking developer portal (Ozone/Perry). HTTP 200.
+  - url: https://developer.api.ob.allica.bank/perry/developer/welcome
+    type: Documentation
+    note: Lists AISP + PISP specs and funds confirmation; getting-started/production/sandbox docs.
+  - url: https://auth1.api.ob.allica.bank/.well-known/openid-configuration
+    type: Authentication
+    note: Production OIDC discovery, HTTP 200; FAPI auth methods, scopes, and endpoints captured verbatim.
+  - url: https://www.openbanking.org.uk/regulated-providers/allica-bank-limited/
+    type: Registry
+    note: OBIE regulated-provider record; ASPSP; links to Allica developer portal.
+actions:
+  openapiHarvested: true
+  openDataProbed: true
+  openDataConfirmed: false
+  reason: |
+    Captured Allica's two proprietary OBIE Read/Write OpenAPI specs verbatim and
+    represented AIS, PIS, CBPII and DCR as separate real apis[] entries with real
+    hosts. Confirmed the production OIDC discovery endpoint live. No Open Data
+    endpoint exists for this branchless SME bank, so none was represented or invented.

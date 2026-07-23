@@ -1,0 +1,140 @@
+aid: allica-bank
+url: https://raw.githubusercontent.com/api-evangelist/allica-bank/refs/heads/main/apis.yml
+name: Allica Bank
+kind: company
+description: Allica Bank Limited is a UK financial-technology bank built specifically
+  for established small and medium-sized businesses, offering business current accounts,
+  savings, commercial mortgages, asset finance, and invoice finance. It is a privately
+  owned, venture-backed challenger bank (not a mutual or building society), authorised
+  by the Prudential Regulation Authority and regulated by the Financial Conduct Authority
+  and PRA (FRN 821851), registered in England and Wales (company number 07706156).
+  As an FCA-authorised ASPSP it participates in UK Open Banking under the Open Banking
+  Implementation Entity (OBIE) Read/Write Standard and PSD2 - it is not one of the
+  nine CMA9 mandated banks, but publishes a public developer portal exposing Account
+  and Transaction Information (AIS), Payment Initiation (PIS), and Confirmation of
+  Funds (fundsconfirmations) APIs for its Business Rewards accounts. Access is secured
+  with FAPI-grade OAuth2/OIDC, PSD2 strong customer authentication, mutual-TLS client
+  authentication, and dynamic client registration using Open Banking Directory /
+  eIDAS certificates and Software Statement Assertions.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Financial Services
+- Banking
+- Open Banking
+- PSD2
+- OBIE
+- FAPI
+- United Kingdom
+- Payments
+- Account Information
+- SME
+- Business Banking
+- Fintech
+created: '2026-07-23'
+modified: '2026-07-23'
+specificationVersion: '0.19'
+apis:
+- aid: allica-bank:allica-bank-account-information-api
+  name: Allica Bank Account and Transaction Information API
+  description: Allica Bank's UK Open Banking Account Information Service (AIS) API,
+    conformant to the OBIE Read/Write Standard v3.1, exposing account access consents,
+    accounts, balances, transactions, beneficiaries, direct debits, standing orders,
+    scheduled payments, parties, offers, and product data for Allica Business Rewards
+    accounts. FAPI-secured (OAuth2/OIDC, mTLS, PSD2 SCA); requires OBIE Directory
+    onboarding and eIDAS/OB certificates.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+  tags:
+  - Account Information
+  - AISP
+  - Open Banking
+  - OBIE
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-account-information-openapi.yaml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
+- aid: allica-bank:allica-bank-payment-initiation-api
+  name: Allica Bank Payment Initiation API
+  description: Allica Bank's UK Open Banking Payment Initiation Service (PIS) API,
+    conformant to the OBIE Read/Write Standard v4.0, exposing domestic payment,
+    domestic scheduled payment, and domestic standing order consents and payments,
+    plus payment-details and funds-confirmation resources for Allica Business Rewards
+    accounts. FAPI-secured (OAuth2/OIDC, mTLS, PSD2 SCA); requires OBIE Directory
+    onboarding and eIDAS/OB certificates.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v4.0/pisp
+  tags:
+  - Payment Initiation
+  - PISP
+  - Open Banking
+  - OBIE
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-payment-initiation-openapi.yaml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+- aid: allica-bank:allica-bank-confirmation-of-funds-api
+  name: Allica Bank Confirmation of Funds API
+  description: Allica Bank's UK Open Banking Confirmation of Funds (CBPII) capability,
+    exposed through the OBIE Read/Write Standard and the `fundsconfirmations` OAuth
+    scope, allowing authorised Card-Based Payment Instrument Issuers and payment
+    flows to confirm the availability of funds on Allica Business Rewards accounts.
+    Documented on the Allica developer portal; FAPI-secured (OAuth2/OIDC, mTLS, PSD2
+    SCA) and not independently verified without OBIE onboarding.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/cbpii
+  tags:
+  - Confirmation of Funds
+  - CBPII
+  - Open Banking
+  - OBIE
+  properties:
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+- aid: allica-bank:allica-bank-dynamic-client-registration-api
+  name: Allica Bank Dynamic Client Registration API
+  description: OBIE Dynamic Client Registration (DCR) v3.2 endpoint used by regulated
+    Third Party Providers to register OAuth clients with Allica Bank using Software
+    Statement Assertions issued by the Open Banking Directory. Confirmed as the
+    registration_endpoint in Allica's production OIDC discovery document.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/dynamic-client-registration/v3.2/register
+  tags:
+  - Dynamic Client Registration
+  - DCR
+  - Onboarding
+  - OBIE
+  properties:
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: OpenIDConfiguration
+    url: https://auth1.api.ob.allica.bank/.well-known/openid-configuration
+common:
+- type: Website
+  url: https://www.allica.bank/
+- type: DeveloperPortal
+  url: https://developer.api.ob.allica.bank/
+- type: Documentation
+  url: https://developer.api.ob.allica.bank/perry/developer/welcome
+- type: Authentication
+  url: https://auth1.api.ob.allica.bank/.well-known/openid-configuration
+- type: LinkedIn
+  url: https://uk.linkedin.com/company/allicabank
+- type: Blog
+  url: https://www.allica.bank/blog
+- type: Support
+  url: https://help.allica.bank/
+- type: TermsOfService
+  url: https://www.allica.bank/website-terms-of-use
+- type: PrivacyPolicy
+  url: https://www.allica.bank/privacy-policy
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
