@@ -1,0 +1,33 @@
+generated: '2026-07-23'
+method: derived
+source: openapi/*.yaml, https://developer.api.ob.allica.bank/perry/developer/welcome, OBIE Read/Write Standard
+versioning:
+  scheme: uri-path
+  apis:
+  - name: Account and Transaction Information (AIS)
+    current: v3.1
+    spec_version: 3.1.10
+    standard: OBIE Read/Write v3.1
+  - name: Payment Initiation (PIS)
+    current: v4.0
+    spec_version: 4.0.0
+    standard: OBIE Read/Write v4.0
+  - name: Dynamic Client Registration (DCR)
+    current: v3.2
+    standard: OBIE DCR v3.2
+  note: Versions are pinned in the URI path; Allica tracks the OBIE Read/Write Standard release train.
+deprecation:
+  policy_url: null
+  standard: OBIE governs version deprecation/withdrawal for the Read/Write Standard; Allica did not publish an independent deprecation-policy page.
+  sunset_header: false
+  deprecated_operations: []
+sla:
+  url: null
+  note: No public SLA/uptime target published on the developer portal for the Open Banking APIs.
+status_page:
+  url: null
+  note: |
+    No genuine Allica-operated status page was confirmed. allica.statuspage.io
+    resolves (200) but returns the default unclaimed Atlassian Statuspage template,
+    so it is not represented as a real status page.
+support: https://help.allica.bank/

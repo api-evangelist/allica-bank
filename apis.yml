@@ -31,7 +31,7 @@ tags:
 - Business Banking
 - Fintech
 created: '2026-07-23'
-modified: '2026-07-23'
+modified: '2026-07-24'
 specificationVersion: '0.19'
 apis:
 - aid: allica-bank:allica-bank-account-information-api
@@ -117,6 +117,48 @@ apis:
   - type: OpenIDConfiguration
     url: https://auth1.api.ob.allica.bank/.well-known/openid-configuration
 common:
+- type: AgenticAccess
+  url: agentic-access/allica-bank-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/allica-bank-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/allica-bank-domain-security.yml
+- type: OAuthScopes
+  url: scopes/allica-bank-scopes.yml
+- type: Authentication
+  url: authentication/allica-bank-authentication.yml
+- type: WellKnown
+  url: well-known/allica-bank-well-known.yml
+- type: SecurityTxt
+  url: well-known/allica-bank-security.txt
+- type: Security
+  url: https://www.allica.bank/responsible-disclosure
+- type: Conventions
+  url: conventions/allica-bank-conventions.yml
+- type: Idempotency
+  url: conventions/allica-bank-conventions.yml
+- type: ErrorCatalog
+  url: errors/allica-bank-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/allica-bank-lifecycle.yml
+- type: Conformance
+  url: conformance/allica-bank-conformance.yml
+- type: DataModel
+  url: data-model/allica-bank-data-model.yml
+- type: MCPServer
+  url: mcp/allica-bank-mcp.yml
+- type: LLMsTxt
+  url: llms/allica-bank-llms.txt
+- type: Sandbox
+  url: sandbox/allica-bank-sandbox.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Overlay
+  url: overlays/allica-bank-account-information-overlay.yaml
+- type: Overlay
+  url: overlays/allica-bank-payment-initiation-overlay.yaml
+- type: GettingStarted
+  url: https://developer.api.ob.allica.bank/perry/developer/welcome
 - type: Website
   url: https://www.allica.bank/
 - type: DeveloperPortal

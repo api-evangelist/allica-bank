@@ -1,0 +1,11 @@
+generated: '2026-07-23'
+method: generated
+skills:
+- file: allica-bank-retrieve-account-information.md
+  name: Retrieve Allica Bank account information
+  api: openapi/allica-bank-account-information-openapi.yaml
+  operations: [CreateAccountAccessConsents, GetAccountAccessConsentsConsentId, GetAccounts, GetAccountsAccountId, GetAccountsAccountIdBalances, GetAccountsAccountIdTransactions]
+- file: allica-bank-initiate-domestic-payment.md
+  name: Initiate an Allica Bank domestic payment
+  api: openapi/allica-bank-payment-initiation-openapi.yaml
+  operations: [CreateDomesticPaymentConsents, GetDomesticPaymentConsentsConsentId, GetDomesticPaymentConsentsConsentIdFundsConfirmation, CreateDomesticPayments, GetDomesticPaymentsDomesticPaymentId]

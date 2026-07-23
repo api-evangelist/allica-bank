@@ -1,0 +1,32 @@
+# Allica Bank
+
+> Allica Bank Limited is a UK FCA/PRA-authorised challenger bank (FRN 821851) built for established small and medium-sized businesses. As an Open Banking ASPSP it exposes OBIE Read/Write Account Information (AIS), Payment Initiation (PIS), and Confirmation of Funds APIs for its Business Rewards accounts, secured with FAPI-grade OAuth2/OIDC, mutual-TLS, and PSD2 strong customer authentication. Access requires OBIE Directory onboarding (Software Statement Assertions + eIDAS/OB certificates) via Dynamic Client Registration.
+
+## APIs
+
+- [Account and Transaction Information API (AIS)](https://developer.api.ob.allica.bank/): OBIE Read/Write v3.1 — accounts, balances, transactions, beneficiaries, direct debits, standing orders, scheduled payments, products. Base: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+- [Payment Initiation API (PIS)](https://developer.api.ob.allica.bank/): OBIE Read/Write v4.0 — domestic payments, scheduled payments, standing orders, file payments, funds confirmation. Base: https://rs1.api.ob.allica.bank/open-banking/v4.0/pisp
+- [Confirmation of Funds (CBPII)](https://developer.api.ob.allica.bank/): fundsconfirmations scope. Base: https://rs1.api.ob.allica.bank/open-banking/v3.1/cbpii
+- [Dynamic Client Registration (DCR v3.2)](https://developer.api.ob.allica.bank/): TPP OAuth client registration with OBIE SSA. Endpoint: https://rs1.api.ob.allica.bank/dynamic-client-registration/v3.2/register
+
+## Specs
+
+- [AIS OpenAPI (verbatim)](https://raw.githubusercontent.com/api-evangelist/allica-bank/refs/heads/main/openapi/allica-bank-account-information-openapi.yaml)
+- [PIS OpenAPI (verbatim)](https://raw.githubusercontent.com/api-evangelist/allica-bank/refs/heads/main/openapi/allica-bank-payment-initiation-openapi.yaml)
+- [Production OIDC discovery](https://auth1.api.ob.allica.bank/.well-known/openid-configuration)
+- [Sandbox OIDC discovery](https://auth1.sandbox.ob.allica.bank/.well-known/openid-configuration)
+
+## Auth & conventions
+
+- [Authentication profile](https://raw.githubusercontent.com/api-evangelist/allica-bank/refs/heads/main/authentication/allica-bank-authentication.yml): FAPI OAuth2/OIDC, mTLS (tls_client_auth / private_key_jwt), certificate-bound tokens, PSD2 SCA.
+- [OAuth scopes](https://raw.githubusercontent.com/api-evangelist/allica-bank/refs/heads/main/scopes/allica-bank-scopes.yml): openid, accounts, payments, fundsconfirmations, consents, and Open Finance scopes.
+- [Conventions](https://raw.githubusercontent.com/api-evangelist/allica-bank/refs/heads/main/conventions/allica-bank-conventions.yml): x-idempotency-key (24h) on writes, x-fapi-interaction-id tracing, OBIE Links/Meta pagination (100/page).
+- [Error catalog](https://raw.githubusercontent.com/api-evangelist/allica-bank/refs/heads/main/errors/allica-bank-problem-types.yml): OBIE UK.OBIE.* error envelope.
+
+## Docs
+
+- [Developer portal](https://developer.api.ob.allica.bank/)
+- [Getting started / welcome](https://developer.api.ob.allica.bank/perry/developer/welcome)
+- [Corporate site](https://www.allica.bank/)
+- [Support](https://help.allica.bank/)
+- [Security disclosure](https://www.allica.bank/responsible-disclosure)

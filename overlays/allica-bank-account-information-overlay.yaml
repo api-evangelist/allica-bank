@@ -1,0 +1,21 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Allica Bank Account & Transaction Information API
+  version: 1.0.0
+extends: openapi/allica-bank-account-information-openapi.yaml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: allica-bank
+    x-apievangelist-standard: OBIE Read/Write v3.1 (AIS)
+    x-apievangelist-auth: FAPI OAuth2/OIDC + mTLS + PSD2 SCA
+    x-apievangelist-onboarding: OBIE Directory SSA + eIDAS/OB certificates via DCR v3.2
+    x-apievangelist-scopes-doc: scopes/allica-bank-scopes.yml
+    x-apievangelist-conventions: conventions/allica-bank-conventions.yml
+    x-apievangelist-errors: errors/allica-bank-problem-types.yml
+- target: $.servers
+  update:
+  - url: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+    description: Production AIS resource server (FAPI/mTLS-gated).
+  - url: https://rs1.sandbox.ob.allica.bank/open-banking/v3.1/aisp
+    description: Sandbox AIS resource server.

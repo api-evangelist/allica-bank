@@ -1,0 +1,6 @@
+Contact: mailto:disclosure@allica.bank
+Encryption: https://www.allica.bank/pgp-key.asc
+Policy: https://www.allica.bank/responsible-disclosure
+Preferred-Languages: en
+Canonical: https://www.allica.bank/.well-known/security.txt
+Expires: 2027-06-09T00:00:00.000Z

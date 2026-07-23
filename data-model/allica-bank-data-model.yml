@@ -1,0 +1,129 @@
+generated: '2026-07-23'
+method: derived
+source: openapi/allica-bank-account-information-openapi.yaml, openapi/allica-bank-payment-initiation-openapi.yaml
+note: |
+  Entity-relationship graph derived from the OBIE Read/Write resource model as
+  exposed by Allica's AIS and PIS OpenAPI specs. Ids are OBIE resource ids
+  (AccountId, ConsentId, DomesticPaymentId, etc.).
+entities:
+- name: AccountAccessConsent
+  api: AIS
+  id: ConsentId
+  description: PSU authorisation granting a TPP read access to a set of account resources and permissions.
+  operations: [CreateAccountAccessConsents, GetAccountAccessConsentsConsentId, DeleteAccountAccessConsentsConsentId]
+- name: Account
+  api: AIS
+  id: AccountId
+  description: A Business Rewards account or savings pot.
+  operations: [GetAccounts, GetAccountsAccountId]
+- name: Balance
+  api: AIS
+  description: InterimAvailable balance for an account.
+  operations: [GetAccountsAccountIdBalances, GetBalances]
+- name: Transaction
+  api: AIS
+  description: Posted transactions for an account (paginated, 100/page).
+  operations: [GetAccountsAccountIdTransactions]
+- name: Beneficiary
+  api: AIS
+  description: Saved payment recipients on an account.
+  operations: [GetAccountsAccountIdBeneficiaries]
+- name: DirectDebit
+  api: AIS
+  operations: [GetAccountsAccountIdDirectDebits]
+- name: StandingOrder
+  api: AIS
+  operations: [GetAccountsAccountIdStandingOrders]
+- name: ScheduledPayment
+  api: AIS
+  operations: [GetAccountsAccountIdScheduledPayments]
+- name: Party
+  api: AIS
+  operations: [GetAccountsAccountIdParty, GetAccountsAccountIdParties]
+- name: Product
+  api: AIS
+  operations: [GetAccountsAccountIdProduct]
+- name: Offer
+  api: AIS
+  operations: [GetAccountsAccountIdOffers]
+- name: DomesticPaymentConsent
+  api: PIS
+  id: ConsentId
+  operations: [CreateDomesticPaymentConsents, GetDomesticPaymentConsentsConsentId, GetDomesticPaymentConsentsConsentIdFundsConfirmation]
+- name: DomesticPayment
+  api: PIS
+  id: DomesticPaymentId
+  operations: [CreateDomesticPayments, GetDomesticPaymentsDomesticPaymentId, GetDomesticPaymentsDomesticPaymentIdPaymentDetails]
+- name: DomesticScheduledPaymentConsent
+  api: PIS
+  operations: [CreateDomesticScheduledPaymentConsents, GetDomesticScheduledPaymentConsentsConsentId]
+- name: DomesticScheduledPayment
+  api: PIS
+  operations: [CreateDomesticScheduledPayments, GetDomesticScheduledPaymentsDomesticScheduledPaymentId, GetDomesticScheduledPaymentsDomesticScheduledPaymentIdPaymentDetails]
+- name: DomesticStandingOrderConsent
+  api: PIS
+  operations: [CreateDomesticStandingOrderConsents, GetDomesticStandingOrderConsentsConsentId]
+- name: DomesticStandingOrder
+  api: PIS
+  operations: [CreateDomesticStandingOrders, GetDomesticStandingOrdersDomesticStandingOrderId, GetDomesticStandingOrdersDomesticStandingOrderIdPaymentDetails]
+- name: FilePaymentConsent
+  api: PIS
+  operations: [CreateFilePaymentConsents, GetFilePaymentConsentsConsentId, CreateFilePaymentConsentsConsentIdFile]
+- name: FilePayment
+  api: PIS
+  operations: [CreateFilePayments, GetFilePaymentsFilePaymentId]
+relationships:
+- from: Account
+  to: AccountAccessConsent
+  type: belongs_to
+  via: ConsentId
+  note: Every AIS account read is scoped by an AccountAccessConsent.
+- from: Balance
+  to: Account
+  type: belongs_to
+  via: AccountId
+- from: Transaction
+  to: Account
+  type: belongs_to
+  via: AccountId
+- from: Beneficiary
+  to: Account
+  type: belongs_to
+  via: AccountId
+- from: DirectDebit
+  to: Account
+  type: belongs_to
+  via: AccountId
+- from: StandingOrder
+  to: Account
+  type: belongs_to
+  via: AccountId
+- from: ScheduledPayment
+  to: Account
+  type: belongs_to
+  via: AccountId
+- from: Party
+  to: Account
+  type: belongs_to
+  via: AccountId
+- from: Product
+  to: Account
+  type: has_one
+  via: AccountId
+- from: DomesticPayment
+  to: DomesticPaymentConsent
+  type: belongs_to
+  via: ConsentId
+  note: A payment is created against a previously authorised consent.
+- from: DomesticScheduledPayment
+  to: DomesticScheduledPaymentConsent
+  type: belongs_to
+  via: ConsentId
+- from: DomesticStandingOrder
+  to: DomesticStandingOrderConsent
+  type: belongs_to
+  via: ConsentId
+- from: FilePayment
+  to: FilePaymentConsent
+  type: belongs_to
+  via: ConsentId

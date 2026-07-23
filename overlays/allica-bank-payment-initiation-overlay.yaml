@@ -1,0 +1,21 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Allica Bank Payment Initiation API
+  version: 1.0.0
+extends: openapi/allica-bank-payment-initiation-openapi.yaml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: allica-bank
+    x-apievangelist-standard: OBIE Read/Write v4.0 (PIS)
+    x-apievangelist-auth: FAPI OAuth2/OIDC + mTLS + PSD2 SCA
+    x-apievangelist-idempotency: x-idempotency-key required on writes, 24h retention
+    x-apievangelist-scopes-doc: scopes/allica-bank-scopes.yml
+    x-apievangelist-conventions: conventions/allica-bank-conventions.yml
+    x-apievangelist-errors: errors/allica-bank-problem-types.yml
+- target: $.servers
+  update:
+  - url: https://rs1.api.ob.allica.bank/open-banking/v4.0/pisp
+    description: Production PIS resource server (FAPI/mTLS-gated).
+  - url: https://rs1.sandbox.ob.allica.bank/open-banking/v4.0/pisp
+    description: Sandbox PIS resource server.

@@ -1,0 +1,97 @@
+generated: '2026-07-23'
+method: searched
+source: openapi/allica-bank-account-information-openapi.yaml, openapi/allica-bank-payment-initiation-openapi.yaml
+docs: https://auth1.api.ob.allica.bank/.well-known/openid-configuration
+note: |
+  The OpenAPI specs declare OBIE oauth2 security schemes (TPP client-credentials +
+  PSU authorization-code) with placeholder authserver.example URLs. Real flow
+  endpoints and the full scope set were confirmed live from Allica's production
+  FAPI OIDC discovery document (scopes_supported), captured verbatim in
+  well-known/allica-bank-openid-configuration.json. These are OBIE Read/Write
+  Open Banking scopes; access is FAPI/mTLS-gated and requires OBIE Directory
+  onboarding.
+schemes:
+- name: TPPOAuth2Security
+  type: oauth2
+  source: openapi + OIDC discovery
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://as1.api.ob.allica.bank/token
+  description: TPP client-credentials authorisation flow with the ASPSP (grant for consent creation / non-PSU resources).
+- name: PSUOAuth2Security
+  type: oauth2
+  source: openapi + OIDC discovery
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://secure.allica.bank/open-banking
+    tokenUrl: https://as1.api.ob.allica.bank/token
+  description: OAuth authorization-code flow requiring PSU strong customer authentication (SCA) to access PSU-owned ASPSP resources.
+scopes:
+- scope: openid
+  description: OpenID Connect authentication; returns an id_token identifying the authenticated PSU consent.
+  flows: [authorizationCode]
+  sources: [OIDC discovery]
+- scope: accounts
+  description: Read access to Account and Transaction Information (AIS) resources for Allica Business Rewards accounts.
+  flows: [authorizationCode, clientCredentials]
+  sources: [openapi/allica-bank-account-information-openapi.yaml, OIDC discovery]
+- scope: payments
+  description: Initiate and read domestic payments, scheduled payments, and standing orders (PIS).
+  flows: [authorizationCode, clientCredentials]
+  sources: [openapi/allica-bank-payment-initiation-openapi.yaml, OIDC discovery]
+- scope: fundsconfirmations
+  description: Confirm availability of funds on an account (Confirmation of Funds / CBPII).
+  flows: [authorizationCode, clientCredentials]
+  sources: [OIDC discovery]
+- scope: consents
+  description: Manage the consent lifecycle (account-access, payment, and funds-confirmation consents).
+  flows: [clientCredentials]
+  sources: [OIDC discovery]
+- scope: resources
+  description: General OBIE resource-access scope covering account resource discovery.
+  flows: [clientCredentials]
+  sources: [OIDC discovery]
+- scope: credit-cards-accounts
+  description: Access to credit-card account information resources (OBIE / Open Finance scope).
+  flows: [authorizationCode]
+  sources: [OIDC discovery]
+- scope: customers
+  description: Access to customer/party identity resources.
+  flows: [authorizationCode]
+  sources: [OIDC discovery]
+- scope: loans
+  description: Access to loan account resources (Open Finance scope).
+  flows: [authorizationCode]
+  sources: [OIDC discovery]
+- scope: financings
+  description: Access to financing product resources (asset/commercial finance).
+  flows: [authorizationCode]
+  sources: [OIDC discovery]
+- scope: invoice-financings
+  description: Access to invoice-financing product resources.
+  flows: [authorizationCode]
+  sources: [OIDC discovery]
+- scope: unarranged-accounts-overdraft
+  description: Access to unarranged overdraft resources on accounts (Open Finance scope).
+  flows: [authorizationCode]
+  sources: [OIDC discovery]
+- scope: consumption
+  description: Access to consumption/usage resources (Open Finance scope).
+  flows: [authorizationCode]
+  sources: [OIDC discovery]
+- scope: lg
+  description: Bank guarantees (letters of guarantee) resource scope (Open Finance).
+  flows: [authorizationCode]
+  sources: [OIDC discovery]
+- scope: recurring-payments
+  description: Recurring-payments resource scope.
+  flows: [authorizationCode, clientCredentials]
+  sources: [OIDC discovery]
+- scope: bank-fixed-incomes
+  description: Access to fixed-income investment product resources (Open Finance scope).
+  flows: [authorizationCode]
+  sources: [OIDC discovery]
+- scope: recurring-consent
+  description: Manage recurring/long-lived consent resources.
+  flows: [clientCredentials]
+  sources: [OIDC discovery]

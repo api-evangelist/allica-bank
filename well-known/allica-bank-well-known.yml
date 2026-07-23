@@ -1,0 +1,32 @@
+generated: '2026-07-23'
+method: searched
+source: Allica Bank Open Banking authorization server + corporate site
+hosts:
+- host: https://auth1.api.ob.allica.bank
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: allica-bank-openid-configuration.json
+    note: Production FAPI OIDC discovery (issuer https://auth1.api.ob.allica.bank).
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+- host: https://auth1.sandbox.ob.allica.bank
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: allica-bank-sandbox-openid-configuration.json
+    note: Sandbox FAPI OIDC discovery (issuer https://auth1.sandbox.ob.allica.bank).
+- host: https://www.allica.bank
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: allica-bank-security.txt
+    note: RFC 9116 security.txt with disclosure Policy + Contact (also resolves at apex allica.bank).
+- host: https://developer.api.ob.allica.bank
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /llms.txt
+    status: 404

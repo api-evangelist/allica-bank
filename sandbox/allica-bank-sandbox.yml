@@ -1,0 +1,27 @@
+generated: '2026-07-23'
+method: searched
+source: https://developer.api.ob.allica.bank/perry/developer/welcome, well-known/allica-bank-sandbox-openid-configuration.json
+note: |
+  Allica operates a dedicated OBIE sandbox alongside production, with its own FAPI
+  authorization server. The sandbox OIDC discovery document was confirmed live
+  (HTTP 200) and captured verbatim. Sandbox access still requires OBIE Directory
+  onboarding / test certificates — no anonymous test credentials are published,
+  and none were invented.
+environments:
+- name: production
+  oidc_issuer: https://auth1.api.ob.allica.bank
+  oidc_discovery: https://auth1.api.ob.allica.bank/.well-known/openid-configuration
+  token_endpoint: https://as1.api.ob.allica.bank/token
+  resource_base: https://rs1.api.ob.allica.bank/open-banking/
+- name: sandbox
+  oidc_issuer: https://auth1.sandbox.ob.allica.bank
+  oidc_discovery: https://auth1.sandbox.ob.allica.bank/.well-known/openid-configuration
+  token_endpoint: https://as1.sandbox.ob.allica.bank/token
+  resource_base: https://rs1.sandbox.ob.allica.bank/open-banking/
+separation:
+  mechanism: distinct hostnames (production api.ob.allica.bank vs sandbox.ob.allica.bank) and separate OBIE authorization servers.
+onboarding:
+  required: OBIE Directory Software Statement Assertion + eIDAS/OB (QWAC/QSeal) certificates via Dynamic Client Registration v3.2.
+test_values:
+  published: false
+  note: No public magic test identifiers, test cards, or hosted test tokens are published; sandbox data is provisioned per onboarded TPP.

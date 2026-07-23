@@ -1,0 +1,57 @@
+generated: '2026-07-23'
+method: derived
+status: candidate
+source: openapi/allica-bank-account-information-openapi.yaml, openapi/allica-bank-payment-initiation-openapi.yaml
+note: |
+  Allica Bank publishes no official hosted MCP server. This is a DERIVED candidate
+  tool list mapping each OBIE Read/Write operation to an MCP tool, so the Open
+  Banking surface can be exposed to agents. Any real deployment inherits Allica's
+  FAPI/mTLS auth and OBIE consent model — these tools cannot be called anonymously.
+server:
+  name: allica-bank
+  transport: http
+  url: null
+  auth: FAPI OAuth2 / mTLS (OBIE Directory onboarding required)
+tools:
+- name: create_account_access_consent
+  description: Create an AIS account-access consent (permissions the PSU authorises).
+  source_operation: openapi/allica-bank-account-information-openapi.yaml#CreateAccountAccessConsents
+- name: get_account_access_consent
+  description: Retrieve an account-access consent by id.
+  source_operation: openapi/allica-bank-account-information-openapi.yaml#GetAccountAccessConsentsConsentId
+- name: list_accounts
+  description: List Business Rewards accounts and savings pots available under the consent.
+  source_operation: openapi/allica-bank-account-information-openapi.yaml#GetAccounts
+- name: get_account
+  description: Retrieve a single account by AccountId.
+  source_operation: openapi/allica-bank-account-information-openapi.yaml#GetAccountsAccountId
+- name: get_account_balances
+  description: Get the InterimAvailable balance for an account.
+  source_operation: openapi/allica-bank-account-information-openapi.yaml#GetAccountsAccountIdBalances
+- name: list_account_transactions
+  description: List posted transactions for an account (paginated, 100/page).
+  source_operation: openapi/allica-bank-account-information-openapi.yaml#GetAccountsAccountIdTransactions
+- name: list_account_beneficiaries
+  description: List saved payment recipients for an account.
+  source_operation: openapi/allica-bank-account-information-openapi.yaml#GetAccountsAccountIdBeneficiaries
+- name: create_domestic_payment_consent
+  description: Create a domestic payment consent to be authorised by the PSU.
+  source_operation: openapi/allica-bank-payment-initiation-openapi.yaml#CreateDomesticPaymentConsents
+- name: get_domestic_payment_consent
+  description: Retrieve a domestic payment consent by id.
+  source_operation: openapi/allica-bank-payment-initiation-openapi.yaml#GetDomesticPaymentConsentsConsentId
+- name: confirm_funds_for_payment_consent
+  description: Confirm availability of funds for a domestic payment consent.
+  source_operation: openapi/allica-bank-payment-initiation-openapi.yaml#GetDomesticPaymentConsentsConsentIdFundsConfirmation
+- name: create_domestic_payment
+  description: Execute a domestic payment against an authorised consent (idempotent, x-idempotency-key required).
+  source_operation: openapi/allica-bank-payment-initiation-openapi.yaml#CreateDomesticPayments
+- name: get_domestic_payment
+  description: Retrieve a domestic payment by id.
+  source_operation: openapi/allica-bank-payment-initiation-openapi.yaml#GetDomesticPaymentsDomesticPaymentId
+- name: create_domestic_standing_order_consent
+  description: Create a domestic standing order consent.
+  source_operation: openapi/allica-bank-payment-initiation-openapi.yaml#CreateDomesticStandingOrderConsents
+- name: create_domestic_standing_order
+  description: Execute a domestic standing order against an authorised consent.
+  source_operation: openapi/allica-bank-payment-initiation-openapi.yaml#CreateDomesticStandingOrders

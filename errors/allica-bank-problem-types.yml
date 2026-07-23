@@ -1,0 +1,57 @@
+generated: '2026-07-23'
+method: derived
+source: openapi/allica-bank-account-information-openapi.yaml, openapi/allica-bank-payment-initiation-openapi.yaml
+format: obie-error
+envelope:
+  media_type: application/json
+  note: |
+    Allica's OBIE Read/Write APIs return an OBIE error envelope (not RFC 9457
+    application/problem+json). The body carries a top-level Code / Id / Message
+    plus an Errors[] array of { ErrorCode, Message, Path?, Url? } where ErrorCode
+    is drawn from the OBIE UK.OBIE.* taxonomy.
+  shape:
+    Code: string
+    Id: string
+    Message: string
+    Errors:
+    - ErrorCode: string   # e.g. UK.OBIE.Field.Missing
+      Message: string
+      Path: string
+      Url: string
+problems:
+- status: 400
+  title: Bad Request
+  description: Request validation failed (malformed body, missing/invalid field, or unsupported value). Errors[] carries OBIE UK.OBIE.Field.* / UK.OBIE.Resource.* codes.
+  applies_to: all write and read operations
+- status: 401
+  title: Unauthorized
+  description: Missing, expired, or invalid access token; failed FAPI/mTLS client authentication or consent not authorised.
+  applies_to: all operations
+- status: 403
+  title: Forbidden
+  description: Token valid but lacks the required scope or consent permission for the resource (e.g. reading a resource not covered by the account-access consent).
+  applies_to: all operations
+- status: 404
+  title: Not Found
+  description: The requested resource (account, consent, or payment id) does not exist or is not visible to the consent.
+  applies_to: GET resource-by-id operations
+- status: 405
+  title: Method Not Allowed
+  description: HTTP method not supported on the resource (e.g. an unsupported OBIE operation such as bulk GET /transactions).
+  applies_to: read operations
+- status: 406
+  title: Not Acceptable
+  description: The Accept header requests a representation the ASPSP cannot produce.
+  applies_to: all operations
+- status: 415
+  title: Unsupported Media Type
+  description: Request Content-Type is not application/json.
+  applies_to: write operations
+- status: 429
+  title: Too Many Requests
+  description: Rate/polling limit exceeded; the TPP should back off (OBIE polling guidance applies).
+  applies_to: all operations
+- status: 500
+  title: Internal Server Error
+  description: Unexpected ASPSP-side failure; retry with the same x-idempotency-key on write operations.
+  applies_to: all operations

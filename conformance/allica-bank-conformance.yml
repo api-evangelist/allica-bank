@@ -1,0 +1,46 @@
+generated: '2026-07-23'
+method: derived
+source: openapi/*.yaml, well-known/allica-bank-openid-configuration.json, review.yml
+note: |
+  Cross-cutting standards Allica Bank's Open Banking surface conforms to, derived
+  from the two OBIE OpenAPI specs and the live production OIDC discovery document.
+  FCA/PRA regulatory authorisation (FRN 821851) is a supervisory status, not a
+  security certification programme, so no Compliance/TrustCenter certifications
+  are asserted here.
+standards:
+- id: oauth2
+  conforms: true
+  evidence: OpenAPI securitySchemes type oauth2 (TPP client-credentials + PSU authorization-code); token endpoint confirmed in OIDC discovery.
+- id: oidc
+  conforms: true
+  evidence: Live OpenID Provider discovery at auth1.api.ob.allica.bank/.well-known/openid-configuration; openid scope; id_token signing algs advertised.
+- id: fapi
+  conforms: true
+  evidence: response_types "code id_token", private_key_jwt + tls_client_auth token auth, tls_client_certificate_bound_access_tokens true, request object signing/encryption, x-fapi-* headers in spec.
+- id: psd2-sca
+  conforms: true
+  evidence: PSU authorization-code flow enforces Strong Customer Authentication; ASPSP under PSD2/UK Open Banking.
+- id: obie-read-write
+  conforms: true
+  evidence: AIS spec is OBIE Read/Write v3.1, PIS spec is OBIE Read/Write v4.0, both bank-branded for Business Rewards accounts.
+- id: obie-dcr
+  conforms: true
+  evidence: registration_endpoint (DCR v3.2) present in OIDC discovery; Software Statement Assertion onboarding.
+- id: mtls
+  conforms: true
+  evidence: tls_client_auth token endpoint auth method and mtls_endpoint_aliases in OIDC discovery.
+- id: dpop
+  conforms: true
+  evidence: dpop_signing_alg_values_supported advertised in OIDC discovery.
+- id: ciba
+  conforms: true
+  evidence: backchannel_authentication_endpoint and urn:openid:params:grant-type:ciba grant advertised in OIDC discovery.
+- id: idempotency
+  conforms: true
+  evidence: x-idempotency-key required header on PIS write operations (24h retention).
+- id: pagination
+  conforms: true
+  evidence: OBIE Links/Meta pagination on GET account transactions (page size 100).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use the OBIE UK.OBIE.* error envelope, not application/problem+json.

@@ -1,0 +1,59 @@
+generated: '2026-07-23'
+method: searched
+source: openapi/allica-bank-payment-initiation-openapi.yaml, openapi/allica-bank-account-information-openapi.yaml, https://developer.api.ob.allica.bank/perry/developer/welcome
+note: |
+  Cross-cutting request/response semantics for Allica Bank's OBIE Read/Write Open
+  Banking APIs, harvested from the two OpenAPI specs and the OBIE Read/Write
+  Standard the bank conforms to. Access is FAPI/mTLS-gated.
+authentication:
+  style: FAPI OAuth2 / OpenID Connect
+  token: Bearer access token in the Authorization header
+  client_auth: mutual-TLS (tls_client_auth) or private_key_jwt; certificate-bound access tokens
+  sca: PSD2 Strong Customer Authentication via the PSU authorization-code flow
+  see: authentication/allica-bank-authentication.yml
+idempotency:
+  supported: true
+  header: x-idempotency-key
+  required: true
+  scope: payment-initiation write operations (create payment / consent / standing order / scheduled payment / file payment)
+  retention: 24 hours — every request is processed only once per x-idempotency-key; the key is valid for 24 hours
+  max_length: 40 characters (OBIE Read/Write constraint)
+  source: openapi/allica-bank-payment-initiation-openapi.yaml
+tracing:
+  correlation_header: x-fapi-interaction-id
+  format: RFC 4122 UUID; echoed back by the ASPSP for request correlation
+  auth_date_header: x-fapi-auth-date (RFC 7231 full date of PSU last login with the TPP)
+  customer_ip_header: x-fapi-customer-ip-address (PSU IP when actively present)
+pagination:
+  style: OBIE cursor/link pagination
+  supported_on: GET /accounts/{AccountId}/transactions
+  page_size: 100 transactions per page
+  response_fields: Links (Self/First/Prev/Next/Last), Meta (TotalPages)
+  note: The bulk GET /transactions endpoint is not supported; only the per-account form is.
+versioning:
+  scheme: uri-path
+  ais_version: v3.1 (OBIE Read/Write Account & Transaction Standard; spec version 3.1.10)
+  pis_version: v4.0 (OBIE Read/Write Payment Initiation Standard; spec version 4.0.0)
+  dcr_version: v3.2 (Dynamic Client Registration)
+error_envelope:
+  format: OBIE error response
+  media_type: application/json
+  shape:
+    Code: HTTP status text
+    Id: unique error id
+    Message: human-readable summary
+    Errors: array of { ErrorCode, Message, Path, Url }
+  note: Uses the OBIE UK.OBIE.* ErrorCode taxonomy, not RFC 9457 problem+json.
+  see: errors/allica-bank-problem-types.yml
+rate_limit_signaling:
+  documented: partial
+  status: 429 Too Many Requests is defined on operations
+  headers: not explicitly documented in the spec (OBIE polling/rate guidance applies)
+media_types:
+  request: application/json; charset=utf-8
+  unsupported: 415 Unsupported Media Type returned for others
+cross_links:
+  authentication: authentication/allica-bank-authentication.yml
+  scopes: scopes/allica-bank-scopes.yml
+  errors: errors/allica-bank-problem-types.yml
+  lifecycle: lifecycle/allica-bank-lifecycle.yml
