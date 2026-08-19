@@ -2,11 +2,15 @@ generated: '2026-07-23'
 method: derived
 status: candidate
 source: openapi/allica-bank-account-information-openapi.yaml, openapi/allica-bank-payment-initiation-openapi.yaml
-note: |
-  Allica Bank publishes no official hosted MCP server. This is a DERIVED candidate
+note: 'Allica Bank publishes no official hosted MCP server. This is a DERIVED candidate
+
   tool list mapping each OBIE Read/Write operation to an MCP tool, so the Open
-  Banking surface can be exposed to agents. Any real deployment inherits Allica's
+
+  Banking surface can be exposed to agents. Any real deployment inherits Allica''s
+
   FAPI/mTLS auth and OBIE consent model — these tools cannot be called anonymously.
+
+  '
 server:
   name: allica-bank
   transport: http
@@ -44,7 +48,8 @@ tools:
   description: Confirm availability of funds for a domestic payment consent.
   source_operation: openapi/allica-bank-payment-initiation-openapi.yaml#GetDomesticPaymentConsentsConsentIdFundsConfirmation
 - name: create_domestic_payment
-  description: Execute a domestic payment against an authorised consent (idempotent, x-idempotency-key required).
+  description: Execute a domestic payment against an authorised consent (idempotent, x-idempotency-key
+    required).
   source_operation: openapi/allica-bank-payment-initiation-openapi.yaml#CreateDomesticPayments
 - name: get_domestic_payment
   description: Retrieve a domestic payment by id.
@@ -55,3 +60,9 @@ tools:
 - name: create_domestic_standing_order
   description: Execute a domestic standing order against an authorised consent.
   source_operation: openapi/allica-bank-payment-initiation-openapi.yaml#CreateDomesticStandingOrders
+deployment:
+  mode: none
+  verified: derived
+  tools: 14
+  checked: '2026-08-12'
+  source: catalog MCP census
