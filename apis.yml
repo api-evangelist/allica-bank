@@ -47,58 +47,14 @@ created: '2026-07-23'
 modified: '2026-07-24'
 specificationVersion: '0.23'
 apis:
-- aid: allica-bank:allica-bank-account-information-api
-  name: Allica Bank Account and Transaction Information API
-  description: Allica Bank's UK Open Banking Account Information Service (AIS) API,
-    conformant to the OBIE Read/Write Standard v3.1, exposing account access consents,
-    accounts, balances, transactions, beneficiaries, direct debits, standing orders,
-    scheduled payments, parties, offers, and product data for Allica Business Rewards
-    accounts. FAPI-secured (OAuth2/OIDC, mTLS, PSD2 SCA); requires OBIE Directory
-    onboarding and eIDAS/OB certificates.
-  humanURL: https://developer.api.ob.allica.bank/
-  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
-  tags:
-  - Account Information
-  - AISP
-  - Open Banking
-  - OBIE
-  properties:
-  - type: OpenAPI
-    url: openapi/allica-bank-account-information-openapi.yaml
-  - type: Documentation
-    url: https://developer.api.ob.allica.bank/perry/developer/welcome
-  - type: APIReference
-    url: https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
-- aid: allica-bank:allica-bank-payment-initiation-api
-  name: Allica Bank Payment Initiation API
-  description: Allica Bank's UK Open Banking Payment Initiation Service (PIS) API,
-    conformant to the OBIE Read/Write Standard v4.0, exposing domestic payment,
-    domestic scheduled payment, and domestic standing order consents and payments,
-    plus payment-details and funds-confirmation resources for Allica Business Rewards
-    accounts. FAPI-secured (OAuth2/OIDC, mTLS, PSD2 SCA); requires OBIE Directory
-    onboarding and eIDAS/OB certificates.
-  humanURL: https://developer.api.ob.allica.bank/
-  baseURL: https://rs1.api.ob.allica.bank/open-banking/v4.0/pisp
-  tags:
-  - Payment Initiation
-  - PISP
-  - Open Banking
-  - OBIE
-  properties:
-  - type: OpenAPI
-    url: openapi/allica-bank-payment-initiation-openapi.yaml
-  - type: Documentation
-    url: https://developer.api.ob.allica.bank/perry/developer/welcome
-  - type: APIReference
-    url: https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
 - aid: allica-bank:allica-bank-confirmation-of-funds-api
   name: Allica Bank Confirmation of Funds API
-  description: Allica Bank's UK Open Banking Confirmation of Funds (CBPII) capability,
-    exposed through the OBIE Read/Write Standard and the `fundsconfirmations` OAuth
-    scope, allowing authorised Card-Based Payment Instrument Issuers and payment
-    flows to confirm the availability of funds on Allica Business Rewards accounts.
-    Documented on the Allica developer portal; FAPI-secured (OAuth2/OIDC, mTLS, PSD2
-    SCA) and not independently verified without OBIE onboarding.
+  description: >-
+    Allica Bank's UK Open Banking Confirmation of Funds (CBPII) capability, exposed through the OBIE Read/Write
+    Standard and the `fundsconfirmations` OAuth scope, allowing authorised Card-Based Payment Instrument
+    Issuers and payment flows to confirm the availability of funds on Allica Business Rewards accounts.
+    Documented on the Allica developer portal; FAPI-secured (OAuth2/OIDC, mTLS, PSD2 SCA) and not independently
+    verified without OBIE onboarding.
   humanURL: https://developer.api.ob.allica.bank/
   baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/cbpii
   tags:
@@ -110,13 +66,14 @@ apis:
   - type: Documentation
     url: https://developer.api.ob.allica.bank/perry/developer/welcome
   - type: APIReference
-    url: https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
 - aid: allica-bank:allica-bank-dynamic-client-registration-api
   name: Allica Bank Dynamic Client Registration API
-  description: OBIE Dynamic Client Registration (DCR) v3.2 endpoint used by regulated
-    Third Party Providers to register OAuth clients with Allica Bank using Software
-    Statement Assertions issued by the Open Banking Directory. Confirmed as the
-    registration_endpoint in Allica's production OIDC discovery document.
+  description: >-
+    OBIE Dynamic Client Registration (DCR) v3.2 endpoint used by regulated Third Party Providers to register
+    OAuth clients with Allica Bank using Software Statement Assertions issued by the Open Banking Directory.
+    Confirmed as the registration_endpoint in Allica's production OIDC discovery document.
   humanURL: https://developer.api.ob.allica.bank/
   baseURL: https://rs1.api.ob.allica.bank/dynamic-client-registration/v3.2/register
   tags:
@@ -129,6 +86,296 @@ apis:
     url: https://developer.api.ob.allica.bank/perry/developer/welcome
   - type: OpenIDConfiguration
     url: https://auth1.api.ob.allica.bank/.well-known/openid-configuration
+- aid: allica-bank:allica-bank-account-access-api
+  name: Allica Bank Account Access API
+  description: The Account Access API from Allica Bank — 2 operation(s) for account access.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+  tags:
+  - Account Access
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-account-access-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+- aid: allica-bank:allica-bank-accounts-api
+  name: Allica Bank Accounts API
+  description: The Accounts API from Allica Bank — 2 operation(s) for accounts.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+- aid: allica-bank:allica-bank-balances-api
+  name: Allica Bank Balances API
+  description: The Balances API from Allica Bank — 2 operation(s) for balances.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+  tags:
+  - Balances
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-balances-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+- aid: allica-bank:allica-bank-beneficiaries-api
+  name: Allica Bank Beneficiaries API
+  description: The Beneficiaries API from Allica Bank — 1 operation(s) for beneficiaries.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+  tags:
+  - Beneficiaries
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-beneficiaries-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+- aid: allica-bank:allica-bank-direct-debits-api
+  name: Allica Bank Direct Debits API
+  description: The Direct Debits API from Allica Bank — 1 operation(s) for direct debits.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+  tags:
+  - Direct Debits
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-direct-debits-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+- aid: allica-bank:allica-bank-domestic-payments-api
+  name: Allica Bank Domestic Payments API
+  description: The Domestic Payments API from Allica Bank — 5 operation(s) for domestic payments.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+  tags:
+  - Domestic Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-domestic-payments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+- aid: allica-bank:allica-bank-domestic-scheduled-payments-api
+  name: Allica Bank Domestic Scheduled Payments API
+  description: >-
+    The Domestic Scheduled Payments API from Allica Bank — 4 operation(s) for domestic scheduled payments.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+  tags:
+  - Domestic Scheduled Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-domestic-scheduled-payments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+- aid: allica-bank:allica-bank-domestic-standing-orders-api
+  name: Allica Bank Domestic Standing Orders API
+  description: >-
+    The Domestic Standing Orders API from Allica Bank — 4 operation(s) for domestic standing orders.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+  tags:
+  - Domestic Standing Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-domestic-standing-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+- aid: allica-bank:allica-bank-file-payments-api
+  name: Allica Bank File Payments API
+  description: The File Payments API from Allica Bank — 5 operation(s) for file payments.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+  tags:
+  - File Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-file-payments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+- aid: allica-bank:allica-bank-offers-api
+  name: Allica Bank Offers API
+  description: The Offers API from Allica Bank — 1 operation(s) for offers.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+  tags:
+  - Offers
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-offers-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+- aid: allica-bank:allica-bank-parties-api
+  name: Allica Bank Parties API
+  description: The Parties API from Allica Bank — 2 operation(s) for parties.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+  tags:
+  - Parties
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-parties-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+- aid: allica-bank:allica-bank-payment-details-api
+  name: Allica Bank Payment Details API
+  description: The Payment Details API from Allica Bank — 3 operation(s) for payment details.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+  tags:
+  - Payment Details
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-payment-details-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+- aid: allica-bank:allica-bank-products-api
+  name: Allica Bank Products API
+  description: The Products API from Allica Bank — 1 operation(s) for products.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-products-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+- aid: allica-bank:allica-bank-scheduled-payments-api
+  name: Allica Bank Scheduled Payments API
+  description: The Scheduled Payments API from Allica Bank — 1 operation(s) for scheduled payments.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+  tags:
+  - Scheduled Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-scheduled-payments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+- aid: allica-bank:allica-bank-standing-orders-api
+  name: Allica Bank Standing Orders API
+  description: The Standing Orders API from Allica Bank — 1 operation(s) for standing orders.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+  tags:
+  - Standing Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-standing-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
+- aid: allica-bank:allica-bank-transactions-api
+  name: Allica Bank Transactions API
+  description: The Transactions API from Allica Bank — 1 operation(s) for transactions.
+  humanURL: https://developer.api.ob.allica.bank/
+  baseURL: https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/allica-bank-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://developer.api.ob.allica.bank/perry/developer/welcome
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml
+  - type: APIReference
+    url: >-
+      https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
 common:
 - type: AgenticAccess
   url: agentic-access/allica-bank-agentic-access.yml
