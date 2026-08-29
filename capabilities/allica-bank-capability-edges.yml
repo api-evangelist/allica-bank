@@ -1,0 +1,84 @@
+slug: allica-bank
+provider: Allica Bank
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 7
+edges:
+- tag: Domestic Payments
+  spec_file: allica-bank-domestic-payments-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.9
+  evidence: POST /domestic-payments  CreateDomesticPayments; GET /domestic-payment-consents/{ConsentId}/funds-confirmation
+  reason: PISP surface that captures payment consent, confirms funds and submits domestic payment instructions
+    — plainly payment instruction capture, validation and authorisation.
+- tag: Domestic Standing Orders
+  spec_file: allica-bank-domestic-standing-orders-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.88
+  evidence: POST /domestic-standing-order-consents 'Create Domestic Standing Order Consents'; POST /domestic-standing-orders
+    'Create Domestic Standing Orders' under '# PISP API Overview These APIs can be used to access PIS'
+  reason: 'Open Banking payment initiation service: capture and authorise (consent) domestic standing
+    order payment instructions, which is payment instruction capture/authorisation.'
+- tag: Domestic Scheduled Payments
+  spec_file: allica-bank-domestic-scheduled-payments-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.85
+  evidence: POST /domestic-scheduled-payments  CreateDomesticScheduledPayments  Create Domestic Scheduled
+    Payments
+  reason: Consent creation and submission of future-dated domestic payment instructions under the Open
+    Banking PISP spec — payment initiation. Scheduling variant does not change the capability.
+- tag: File Payments
+  spec_file: allica-bank-file-payments-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.85
+  evidence: POST /file-payment-consents/{ConsentId}/file, POST /file-payments 'Create File Payments';
+    schemas OBWriteFileConsent3, OBWriteFile2
+  reason: Bulk/file-based payment instruction submission with consent authorisation under the PISP (payment
+    initiation) API — payment initiation capture and authorisation.
+- tag: Accounts
+  spec_file: allica-bank-accounts-api-openapi.yml
+  capability_id: BC-1330.10
+  capability_id_l1: BC-1330
+  capability_name: Deposit Account Management
+  confidence: 0.75
+  evidence: GET /accounts  GetAccounts; "Accounts API supports only Business Rewards Account and Savings
+    Pot"
+  reason: Exposes the bank's current/savings account records for business customers, i.e. deposit account
+    data. Read-only surface so lifecycle operations are absent, but the account type is explicitly a deposit
+    product.
+- tag: Parties
+  spec_file: allica-bank-parties-api-openapi.yml
+  capability_id: BC-1300.40
+  capability_id_l1: BC-1300
+  capability_name: Customer Information Management
+  confidence: 0.72
+  evidence: GET /accounts/{AccountId}/parties and GET /accounts/{AccountId}/party  'Get Parties'
+  reason: Returns account holder / related party identity and contact details held by the bank — customer
+    information retrieval rather than servicing transactions.
+- tag: Payment Details
+  spec_file: allica-bank-payment-details-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.7
+  evidence: GET /domestic-payments/{DomesticPaymentId}/payment-details  'Get Payment Details' under '#
+    PISP API Overview'
+  reason: Retrieves status/details of payments initiated via the payment initiation API; clearly payments
+    domain, sub-capability between initiation status and processing so confidence moderated.

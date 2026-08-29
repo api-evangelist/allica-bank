@@ -389,6 +389,9 @@ apis:
     url: >-
       https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
 common:
+- type: CapabilityMap
+  url: capabilities/allica-bank-capability-edges.yml
+  name: Allica Bank Business Capability Map
 - type: AgenticAccess
   url: agentic-access/allica-bank-agentic-access.yml
 - type: VulnerabilityDisclosure
