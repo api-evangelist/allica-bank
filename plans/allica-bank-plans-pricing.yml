@@ -10,6 +10,10 @@ provenance:
   grounding: every price_text was found verbatim in the fetched page text
 audience: business-product
 pricing_basis: usage-other
+delivery:
+  delivery: managed
+  method: keyword-prefilter
+  read: '2026-09-20'
 published: true
 note: Fee and limit schedule for Allica Business Rewards Account; most transaction types free, CHAPS outgoing
   £20, conditional £25 monthly fee, and tiered cashback (1%/1.5%). Not an API pricing page.
