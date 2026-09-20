@@ -1,0 +1,56 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://www.allica.bank/fees/rewards-account-fees-and-limits
+sources:
+- https://www.allica.bank/fees/rewards-account-fees-and-limits
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T124425
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: usage-other
+published: true
+note: Fee and limit schedule for Allica Business Rewards Account; most transaction types free, CHAPS outgoing
+  £20, conditional £25 monthly fee, and tiered cashback (1%/1.5%). Not an API pricing page.
+plan_count: 4
+currency: GBP
+plans:
+- name: Monthly account fee
+  price_text: None*
+  currency: GBP
+  period: month
+  unit: account
+  included_quota: No monthly fee if average balance is at least £10,000
+  overage: Customers whose balance falls below an average of £10,000 in the previous month will incur
+    a £25 monthly fee.
+- name: CHAPS - Outgoing
+  price_text: £20 per transaction
+  price: 20
+  currency: GBP
+  period: per-use
+  unit: transaction
+- name: Faster Payments - Outgoing
+  price_text: None**
+  currency: GBP
+  period: per-use
+  unit: payment
+  included_quota: Faster Payments are free for up to 150 transactions per month
+  overage: after which a £0.12 fee applies per payment
+- name: Cashback offer
+  price_text: 1% cashback on every settled card transaction
+  price: 1
+  currency: GBP
+  period: per-use
+  unit: card transaction
+  included_quota: Once your total card spend before a transaction exceeds £10,000 in a month, you will
+    earn 1.5% on future transactions.
+rate_limit_statements:
+- Faster Payments - Outgoing £250,000 per transaction
+- CHAPS - Outgoing £1,000,000 per transaction
+- Maximum 500 payments per bulk payment, FPS limits apply to individual payments within the bulk payment
+- Card payment - Domestic £50,000 per transaction
+- Card payment - International £50,000 per transaction
+- Cash withdrawal £750 per day
+- International transfer - Outgoing £250,000 per transaction
+- Faster Payments are free for up to 150 transactions per month, after which a £0.12 fee applies per payment

@@ -410,6 +410,10 @@ apis:
     url: >-
       https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
 common:
+- type: Pricing
+  url: https://www.allica.bank/fees/rewards-account-fees-and-limits
+- type: Plans
+  url: plans/allica-bank-plans-pricing.yml
 - type: CapabilityMap
   url: capabilities/allica-bank-capability-edges.yml
   name: Allica Bank Business Capability Map
