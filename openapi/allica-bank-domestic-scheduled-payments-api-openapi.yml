@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Payment Initiation API Specification Domestic Scheduled Payments API
+  title: Payment Initiation API Specification Domestic Scheduled…
   description: '# PISP API Overview
 
     These APIs can be used to access PIS for Allica Business Rewards accounts.
@@ -8,9 +8,7 @@ info:
 
     ## Base URL
 
-    The base URL for all PIS APIs is: `https://rs1.api.ob.allica.bank/open-banking/v4.0/pisp/**`
-
-    '
+    The base URL for all PIS APIs is: `https://rs1.api.ob.allica.bank/open-banking/v4.0/pisp/**`'
   termsOfService: https://www.openbanking.org.uk/terms
   contact:
     name: Service Desk

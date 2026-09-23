@@ -1,101 +1,10 @@
 openapi: 3.2.0
 info:
-  title: Account and Transaction API Specification Standing Orders API
+  title: Account and Transaction API Specification Standing Orders…
   description: '# AISP API Overview
 
 
-    These APIs can be used to access account information for Allica Business Rewards accounts.
-
-
-    ## Base URL
-
-    The base URL for all AIS APIs is: `https://rs1.api.ob.allica.bank/open-banking/v4.0/aisp/**`
-
-
-    ## Account Access Consents
-
-    [Account Access Consents API](/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml#operations-tag-Account_Access)
-
-
-    ## Accounts
-
-    [Accounts API](/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml#operations-tag-Accounts)
-
-
-    Accounts API supports only Business Rewards Account and Savings Pot.
-
-
-    ## Balances
-
-    [Balances API](/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml#operations-tag-Balances)
-
-
-    Balances shown in this endpoint provide the `InterimAvailable` value.
-
-
-    `InterimAvailable` balance is the value displayed most widely to our customers within the Allica apps.
-
-
-    ## Transactions
-
-    [Transactions API](/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml#operations-tag-Transactions)
-
-
-    Pagination is supported on GET /accounts/{AccountId}/transactions end point with a page size of 100 transactions.
-
-
-    > Please note GET /transactions end point is not supported
-
-
-    ## Beneficiaries
-
-    [Beneficiaries API](/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml#operations-tag-Beneficiaries)
-
-
-    Payment recipients are accessible via the Beneficiaries API. This API is useful when setting up payments.
-
-
-    ## Direct Debits
-
-    [Direct Debits API](/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml#operations-tag-Direct_Debits)
-
-
-    Only GET /accounts/{accountId}/direct-debits is supported.
-
-
-    ## Standing Orders
-
-    [Standing Orders API](/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml#operations-tag-Standing_Orders)
-
-
-    Only GET /acccounts/{accountId}/standing-orders are supported
-
-
-
-    ## Offers
-
-    [Offers API](/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml#operations-tag-Offers)
-
-
-    Not currently supported.
-
-
-    ## Parties
-
-    [Parties API](/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml#operations-tag-Parties)
-
-
-    Not currently supported.
-
-
-    ## Scheduled Payments
-
-    [Scheduled Payments API](/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/account-info-openapi.yaml#operations-tag-Scheduled_Payments)
-
-
-    Only GET /accounts/{accountId}/scheduled-payments is supported.
-
-    '
+    These APIs can be used to access account information for Allica Business Rewards accounts.'
   termsOfService: https://www.openbanking.org.uk/terms
   contact:
     name: Service Desk
