@@ -1,0 +1,12 @@
+{
+ "url": "https://developer.api.ob.allica.bank/swagger/payment-initiation-openapi.yaml",
+ "requested_url": "https://developer.api.ob.allica.bank/swagger/payment-initiation-openapi.yaml",
+ "status": 200,
+ "content_type": "text/yaml; charset=UTF-8",
+ "bytes": 6270444,
+ "sha256": "2a0b09ece4ddc7c7d27776b2fe809ff434475e1f7d49991d2ba0381d6128cd01",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}

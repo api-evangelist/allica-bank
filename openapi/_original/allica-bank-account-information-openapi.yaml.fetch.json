@@ -1,0 +1,12 @@
+{
+ "url": "https://developer.api.ob.allica.bank/swagger/account-info-openapi.yaml",
+ "requested_url": "https://developer.api.ob.allica.bank/swagger/account-info-openapi.yaml",
+ "status": 200,
+ "content_type": "text/yaml; charset=UTF-8",
+ "bytes": 7839248,
+ "sha256": "77705d355afba2aa1d92b19dc1be9d02dafc263358e3c006048ad683b57cdda0",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
