@@ -72,7 +72,7 @@ tags_raw:
 - Fintech
 - Financial-Services
 created: '2026-07-23'
-modified: '2026-07-24'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: allica-bank:allica-bank-confirmation-of-funds-api
@@ -411,6 +411,8 @@ apis:
     url: >-
       https://developer.api.ob.allica.bank/perry/developer/documentation?resource=ukhub-allica-portal&document=swagger/payment-initiation-openapi.yaml
 common:
+- url: https://www.allica.bank/blog/rss.xml
+  type: BlogRSS
 - type: Pricing
   url: https://www.allica.bank/fees/rewards-account-fees-and-limits
 - type: Plans
