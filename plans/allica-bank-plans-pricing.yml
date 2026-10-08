@@ -58,3 +58,45 @@ rate_limit_statements:
 - Cash withdrawal £750 per day
 - International transfer - Outgoing £250,000 per transaction
 - Faster Payments are free for up to 150 transactions per month, after which a £0.12 fee applies per payment
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - metered
+  units:
+  - object
+  - transaction
+  plans:
+  - name: Monthly account fee
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
+  - name: CHAPS - Outgoing
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - transaction
+    periods:
+    - other
+  - name: Faster Payments - Outgoing
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - transaction
+    periods:
+    - other
+  - name: Cashback offer
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - transaction
+    periods:
+    - other
