@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/allica-bank/integrations
 - https://n8n.io/integrations/allica-bank/
@@ -9,8 +9,26 @@ checked:
 - https://composio.dev/toolkits/allica-bank
 - https://monid.ai/tools/allica-bank
 - https://n8n.io/integrations/allica-bank/
+- https://www.openbanking.org.uk/regulated-providers/allica-bank-limited/
 - https://zapier.com/apps/allica-bank/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: UK Open Banking
+  partner: null
+  type: contract
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.openbanking.org.uk/regulated-providers/allica-bank-limited/
+  contract_reference:
+    register: UK Open Banking regulated providers (OBL directory)
+    spec_file: null
+    role: Account Providers
+    registered_name: Allica Bank Limited
+    register_id: https://register.fca.org.uk/s/firm?id=0010X00004G4d2gQAB
+    matched_domain: allica.bank
+    api_families: null
+    detected_by: sweep-standard-registers.py
+    detected: '2026-10-12'
 templates: []
