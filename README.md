@@ -1,4 +1,4 @@
-# Allica Bank (allica-bank)
+# Allica Bank
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,92 +64,144 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Allica Bank Limited is a UK financial-technology bank built specifically for established small and medium-sized businesses, offering business current accounts, savings, commercial mortgages, asset finance, and invoice finance. It is a privately owned, venture-backed challenger bank (not a mutual or building society), authorised by the Prudential Regulation Authority and regulated by the Financial Conduct Authority and PRA (FRN 821851). As an FCA-authorised ASPSP it participates in UK Open Banking under the OBIE Read/Write Standard and PSD2, publishing a public developer portal for Account Information, Payment Initiation, and Confirmation of Funds APIs on its Business Rewards accounts. Allica is not one of the nine CMA9 mandated banks.
+Allica Bank Limited is a UK financial-technology bank built specifically for established small and medium-sized businesses, offering business current accounts, savings, commercial mortgages, asset finance, and invoice finance. It is a privately owned, venture-backed challenger bank (not a mutual or building society), authorised by the Prudential Regulation Authority and regulated by the Financial Conduct Authority and PRA (FRN 821851), registered in England and Wales (company number 07706156). As an FCA-authorised ASPSP it participates in UK Open Banking under the Open Banking Implementation Entity (OBIE) Read/Write Standard and PSD2 - it is not one of the nine CMA9 mandated banks, but publishes a public developer portal exposing Account and Transaction Information (AIS), Payment Initiation (PIS), and Confirmation of Funds (fundsconfirmations) APIs for its Business Rewards accounts. Access is secured with FAPI-grade OAuth2/OIDC, PSD2 strong customer authentication, mutual-TLS client authentication, and dynamic client registration using Open Banking Directory / eIDAS certificates and Software Statement Assertions.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/allica-bank/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/allica-bank/refs/heads/main/apis.yml)
+**Areas:** Financial Services · Banking · Open Banking · PSD2 · OBIE · FAPI · United Kingdom · Payments · Account Information · Small Business · Business Banking · Fintech
 
-## Tags
+## Allica Bank on APIs.io
 
-- Financial Services
-- Banking
-- Open Banking
-- PSD2
-- OBIE
-- FAPI
-- United Kingdom
-- Payments
-- Account Information
-- SME
-- Business Banking
-- Fintech
+Everything profiled for Allica Bank is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/allica-bank/](https://apis.io/providers/allica-bank/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (18)
 
-- **Created:** 2026-07-23
-- **Modified:** 2026-07-23
+- [Allica Bank Confirmation of Funds API](https://apis.io/apis/allica-bank/allica-bank-confirmation-of-funds-api/) — Allica Bank's UK Open Banking Confirmation of Funds (CBPII) capability, exposed through the OBIE Read/Write Standard and the `fundsconfirmations` OAuth…
+- [Allica Bank Dynamic Client Registration API](https://apis.io/apis/allica-bank/allica-bank-dynamic-client-registration-api/) — OBIE Dynamic Client Registration (DCR) v3.2 endpoint used by regulated Third Party Providers to register OAuth clients with Allica Bank using Software…
+- [Allica Bank Account Access API](https://apis.io/apis/allica-bank/allica-bank-account-access-api/) — The Account Access API from Allica Bank — 2 operation(s) for account access.
+- [Allica Bank Accounts API](https://apis.io/apis/allica-bank/allica-bank-accounts-api/) — The Accounts API from Allica Bank — 2 operation(s) for accounts.
+- [Allica Bank Balances API](https://apis.io/apis/allica-bank/allica-bank-balances-api/) — The Balances API from Allica Bank — 2 operation(s) for balances.
+- [Allica Bank Beneficiaries API](https://apis.io/apis/allica-bank/allica-bank-beneficiaries-api/) — The Beneficiaries API from Allica Bank — 1 operation(s) for beneficiaries.
+- [Allica Bank Direct Debits API](https://apis.io/apis/allica-bank/allica-bank-direct-debits-api/) — The Direct Debits API from Allica Bank — 1 operation(s) for direct debits.
+- [Allica Bank Domestic Payments API](https://apis.io/apis/allica-bank/allica-bank-domestic-payments-api/) — The Domestic Payments API from Allica Bank — 5 operation(s) for domestic payments.
+- [Allica Bank Domestic Scheduled Payments API](https://apis.io/apis/allica-bank/allica-bank-domestic-scheduled-payments-api/) — The Domestic Scheduled Payments API from Allica Bank — 4 operation(s) for domestic scheduled payments.
+- [Allica Bank Domestic Standing Orders API](https://apis.io/apis/allica-bank/allica-bank-domestic-standing-orders-api/) — The Domestic Standing Orders API from Allica Bank — 4 operation(s) for domestic standing orders.
+- [Allica Bank File Payments API](https://apis.io/apis/allica-bank/allica-bank-file-payments-api/) — The File Payments API from Allica Bank — 5 operation(s) for file payments.
+- [Allica Bank Offers API](https://apis.io/apis/allica-bank/allica-bank-offers-api/) — The Offers API from Allica Bank — 1 operation(s) for offers.
+- [Allica Bank Parties API](https://apis.io/apis/allica-bank/allica-bank-parties-api/) — The Parties API from Allica Bank — 2 operation(s) for parties.
+- [Allica Bank Payment Details API](https://apis.io/apis/allica-bank/allica-bank-payment-details-api/) — The Payment Details API from Allica Bank — 3 operation(s) for payment details.
+- [Allica Bank Products API](https://apis.io/apis/allica-bank/allica-bank-products-api/) — The Products API from Allica Bank — 1 operation(s) for products.
+- [Allica Bank Scheduled Payments API](https://apis.io/apis/allica-bank/allica-bank-scheduled-payments-api/) — The Scheduled Payments API from Allica Bank — 1 operation(s) for scheduled payments.
+- [Allica Bank Standing Orders API](https://apis.io/apis/allica-bank/allica-bank-standing-orders-api/) — The Standing Orders API from Allica Bank — 1 operation(s) for standing orders.
+- [Allica Bank Transactions API](https://apis.io/apis/allica-bank/allica-bank-transactions-api/) — The Transactions API from Allica Bank — 1 operation(s) for transactions.
 
-## APIs
+### Published properties
 
-### Allica Bank Account and Transaction Information API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-UK Open Banking Account Information Service (AIS) conformant to the OBIE Read/Write Standard v3.1 — account access consents, accounts, balances, transactions, beneficiaries, direct debits, standing orders, scheduled payments, parties, offers, and product data for Allica Business Rewards accounts. FAPI-secured (OAuth2/OIDC, mTLS, PSD2 SCA).
+#### MCP servers (1)
 
-- **Human URL:** [https://developer.api.ob.allica.bank/](https://developer.api.ob.allica.bank/)
-- **Base URL:** `https://rs1.api.ob.allica.bank/open-banking/v3.1/aisp`
+Model Context Protocol servers that expose the API to agents.
 
-#### Properties
+- [allica-bank](https://apis.io/servers/allica-bank/allica-bank/)
 
-- [OpenAPI](openapi/allica-bank-account-information-openapi.yaml) — Account and Transaction API Specification v3.1.10 (harvested verbatim from Allica's developer portal)
-- [Documentation](https://developer.api.ob.allica.bank/perry/developer/welcome)
+#### Agentic access (1)
 
-### Allica Bank Payment Initiation API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-UK Open Banking Payment Initiation Service (PIS) conformant to the OBIE Read/Write Standard v4.0 — domestic payment, domestic scheduled payment, and domestic standing order consents and payments, plus payment-details and funds-confirmation resources. FAPI-secured (OAuth2/OIDC, mTLS, PSD2 SCA).
+- [Allica Bank Agentic Access](https://apis.io/agentic-access/allica-bank/allica-bank-agentic-access/)
 
-- **Human URL:** [https://developer.api.ob.allica.bank/](https://developer.api.ob.allica.bank/)
-- **Base URL:** `https://rs1.api.ob.allica.bank/open-banking/v4.0/pisp`
+#### Overlays (2)
 
-#### Properties
+OpenAPI overlays, including conversational phrasing for each operation.
 
-- [OpenAPI](openapi/allica-bank-payment-initiation-openapi.yaml) — Payment Initiation API Specification v4.0.0 (harvested verbatim from Allica's developer portal)
-- [Documentation](https://developer.api.ob.allica.bank/perry/developer/welcome)
+- [Allica Bank Account Information Overlay](https://apis.io/overlays/allica-bank/allica-bank-account-information-overlay/)
+- [Allica Bank Payment Initiation Overlay](https://apis.io/overlays/allica-bank/allica-bank-payment-initiation-overlay/)
 
-### Allica Bank Confirmation of Funds API
+#### Security (3)
 
-UK Open Banking Confirmation of Funds (CBPII) capability, exposed via the OBIE Read/Write Standard and the `fundsconfirmations` OAuth scope. Documented on the developer portal; not independently verified without OBIE onboarding.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://developer.api.ob.allica.bank/](https://developer.api.ob.allica.bank/)
-- **Base URL:** `https://rs1.api.ob.allica.bank/open-banking/v3.1/cbpii`
+- [Allica Bank Authentication](https://apis.io/security/allica-bank/allica-bank-authentication/)
+- [Allica Bank Domain Security](https://apis.io/security/allica-bank/allica-bank-domain-security/)
+- [Allica Bank Vulnerability Disclosure](https://apis.io/security/allica-bank/allica-bank-vulnerability-disclosure/)
 
-#### Properties
+#### OAuth scopes (1)
 
-- [Documentation](https://developer.api.ob.allica.bank/perry/developer/welcome)
+The permissions the API asks for.
 
-### Allica Bank Dynamic Client Registration API
+- [Allica Bank Scopes](https://apis.io/scopes/allica-bank/allica-bank-scopes/)
 
-OBIE Dynamic Client Registration (DCR) v3.2 endpoint for regulated Third Party Providers to register OAuth clients using Open Banking Directory Software Statement Assertions. Confirmed as the `registration_endpoint` in Allica's production OIDC discovery document.
+#### Plans and pricing (2)
 
-- **Human URL:** [https://developer.api.ob.allica.bank/](https://developer.api.ob.allica.bank/)
-- **Base URL:** `https://rs1.api.ob.allica.bank/dynamic-client-registration/v3.2/register`
+Published plans, tiers and prices.
 
-#### Properties
+- [Allica Bank Plans Pricing](https://apis.io/plans/allica-bank/allica-bank-plans-pricing/)
+- [Allica Bank Price Estimates](https://apis.io/plans/allica-bank/allica-bank-price-estimates/)
 
-- [Documentation](https://developer.api.ob.allica.bank/perry/developer/welcome)
-- [OpenID Configuration](https://auth1.api.ob.allica.bank/.well-known/openid-configuration)
+## Where to find this API
 
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.allica.bank/)
-- [Developer Portal](https://developer.api.ob.allica.bank/)
 - [Documentation](https://developer.api.ob.allica.bank/perry/developer/welcome)
-- [Authentication (OIDC discovery)](https://auth1.api.ob.allica.bank/.well-known/openid-configuration)
-- [LinkedIn](https://uk.linkedin.com/company/allicabank)
-- [Blog](https://www.allica.bank/blog)
+- [Getting started](https://developer.api.ob.allica.bank/perry/developer/welcome)
+- [Pricing](https://www.allica.bank/fees/rewards-account-fees-and-limits)
 - [Support](https://help.allica.bank/)
-- [Terms of Service](https://www.allica.bank/website-terms-of-use)
-- [Privacy Policy](https://www.allica.bank/privacy-policy)
+- [Blog](https://www.allica.bank/blog)
+- [Security](https://www.allica.bank/responsible-disclosure)
+- [Terms of service](https://www.allica.bank/website-terms-of-use)
+- [Privacy policy](https://www.allica.bank/privacy-policy)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 50.1** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 45.7 |
+| Contract governance | 4.5 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 66.1 |
+| Access clarity | 63.2 |
+
+**Agent readiness 47.0** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | verified |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | verified |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 48.8** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/allica-bank/](https://apis.io/providers/allica-bank/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Allica Bank: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/allica-bank/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
